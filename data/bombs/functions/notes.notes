@@ -1,0 +1,2 @@
+summon minecraft:falling_block -51 -3 165 {BlockState:{Name:tnt},NoGravity:1b,Team:bTNT}
+setblock 50 -22 222 redstone_block
