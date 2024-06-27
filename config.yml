@@ -3,7 +3,7 @@
 # ********************************************
 
 # Language file you want to use
-Language: PL
+Language: EN
 # Defines if you want to auto download default locale files from github repository
 # You can disable this if you are using EN or you already have your locale setup and you dont need to have other languages being downloaded
 LanguageDownload: true
@@ -13,11 +13,11 @@ Economy:
   # Attention! For economy to work properly with other plugins you will need ether an injector or recompiled Vault version. 
   # You can find both option at top of plugins page
   # ATTENTION! If you disabled CMI economy while server was running, you will need to perform full server restart for this to take correct effect and avoid any issues while getting players balances
-  Enabled: true
+  Enabled: false
   # Determines if player needs to confirm money payment by clicking on chat message
   Confirmation: false
   # Set to true if you want to log money transfers between players
-  LogEnabled: true
+  LogEnabled: false
   log:
     Unknown: true
     Transfer: true
@@ -33,7 +33,7 @@ Economy:
     Permission: false
     # Should we allow checque usage in creative mode
     # If you have creative server, keep this at false or players could start duplicating items
-    InCreative: true
+    InCreative: false
     # Should we accept old cheque item stacks with non encoded data in them
     # Keep it at false for most security
     AcceptNotEncoded: false
@@ -52,13 +52,18 @@ Economy:
   BalTop:
     # List of players to exclude from baltop list
     Exclude:
-    - xMarcelM
+    - Notch
     # When enabled baltop list will show short money values, like 12.5M instead of 12501234
-    DisplayWithShorts: true
+    DisplayWithShorts: false
     # List of names to exclude from baltop
     # Can be used to filter out towny towns
     ExcludeStartingWith:
-
+    - town_
+    - town-
+    - towny_
+    - towny-
+    - debt-
+    - debt_
     # When set to true some fake accounts will be included into baltop list
     # This should include some previously marked accounts as fake which have been created for town usage or similar things
     IncludeFakes: false
@@ -74,7 +79,7 @@ Economy:
     MaximumAmount: 1.0E8
     # Defines amount until player can send to another player
     # This can prevent annoying spam some players would want to create by sending tiny amounts of money
-    MinimalPay: 0.01
+    MinimalPay: 0.5
     # Defines if you want to allow payments with fractions
     # if this is disabled then payments will be limited to whole numbers and in case player provides number with fraction we will round number down
     Fractions: true
@@ -83,7 +88,7 @@ Economy:
     # Format used for displaying money
     MoneyFormat: '###,##0.00'
     # Converts long numbers to short ones, like 12305122 to 12.3m
-    UseShortNumbers: true
+    UseShortNumbers: false
     # This format is only for amounts which gets defines suffix like '1.23k' while numbers lover than 1k will use MoneyFormat
     shortNumbersFormat: '###,##0.0'
     # Suffixes for short numbers
@@ -95,7 +100,7 @@ Economy:
     - t-1000000000000
     - q-1000000000000000
     # Replaces to western format where decimals are separated by , and thousands by . In example 1,000,000.00 changes to 1.000.000,00
-    SwitchPlaces: true
+    SwitchPlaces: false
     # Placing of currency symbol
     Placing: '[money][symbol]'
 FileSave:
@@ -163,7 +168,7 @@ Optimizations:
   # Used to show date in places like mail, checkban, infopage and similar locations
   LongDateFormat2: dd/MM/yy HH:mm:ss
   # Used to show date in places like inv gui and similar locations
-  ShortDateFormat: dd/MM
+  ShortDateFormat: dd/MM/yy
   # Do you want to record sell hand actions into file
   SellLog: true
   # When set to true players with same name but different capitalization will be denyied from joining server to avoid possible issues. In example if on first day player Zrips joined server and on second day player zRips tries to join server, he will be rejected
@@ -291,10 +296,10 @@ Optimizations:
       MobHeads: true
     # List of materials to be allowed on players head
     WhiteList:
-    - glass
+    - bedrock
   helpop:
     # When set to true player will not see his sent message to helpop, but rather predefined message informing that his question have been sent to online staff
-    feedbackMessage: false
+    feedbackMessage: true
   IP:
     # When set to true, players ip will be recorded for future use, like recognizing players other accounts
     # Some commands will have limited usage when this is disabled
@@ -320,7 +325,9 @@ Optimizations:
   CMIPlayTimeTracking: false
   # Player names to be excluded from playtimetop list
   PlaytimeTopExclude:
-  
+  - Some
+  - Names
+  - Here
   # Time in days for player to be offline when he will be excluded from playtimetop list
   # Set to 0 if you want to disable this
   PlaytimeTopOffline: 0
@@ -335,7 +342,7 @@ Optimizations:
     MaxLength: 64
     # List of materials to block from itemName command
     TypeBlackList:
-
+    - gold_nugget
     # When set to true items which lore got changed with itemname command will be marked with NBT data as 'ModifiedLore' boolean type
     MarkChanged: false
   OnDurabilityLoss:
@@ -403,7 +410,7 @@ Optimizations:
       # List of players which you should not be able to open inventories
       # This can still be bypassed if you are OP
       BlackList:
-
+      - Zrips
       # Do you want to disable inv command on players who are offline
       DisableOffline: false
     Clear:
@@ -411,7 +418,8 @@ Optimizations:
       Confirmation: true
       # List of NBT paths we should check before removing item from inventory. Each line should start with NBT: this is for the future updates which will involve aditional optional checks
       Exclude:
-      
+      - NBT:ItemJoin Name
+      - NBT:ItemJoin.Name
     List:
       # Sorts players custom groups in Ascending or descending order
       ASCOrder: true
@@ -524,7 +532,7 @@ Worth:
   # Defines lore that will prevent an item from being sold using /cmi sell.
   # Color codes and capitalization are being ignored
   BadLore:
-
+  - Creative item by Gasha
   # If enabled any item with custom name will not be allowed to be sold with /cmi sell command
   CustomNameBlocking: false
   # If enabled any item with custom lore will not be allowed to be sold with /cmi sell command
@@ -546,7 +554,7 @@ BossBar:
   HpBarEnabled: true
   # List of mob types which will be excluded from hp boss bar
   HpBarBlackList:
-
+  - Ender_dragon
 Ban:
   # When set to true players who are banned will get messages modified by CMI instead of seeing vanilla type of message
   OverrideLoginMessage: false
@@ -603,7 +611,7 @@ Afk:
   CheckInterval: 10
   # When set to true, players playtime counter stops
   # As of nature how this system works you can see +-1second jumping up and down while checking players playtime
-  StopPlayTime: true
+  StopPlayTime: false
   # Defines how long to wait after player stops moving to set him as afk
   # Player needs to have cmi.command.afk.auto permission node
   # Set to 0 if you want to disable it
@@ -611,14 +619,14 @@ Afk:
   # Defines commands to be performed when player enters afk mode automatically while addling
   # Supports specialized commands
   AutoAfkCmds:
-  - cmi broadcast !&6[playerDisplayName] &ejest teraz AFK
+  - cmi broadcast !&6[playerDisplayName] &eis now AFK
   # Defines commands to be performed when player enters /cmi afk
   # Supports specialized commands
   ManualAfkCmds:
-  - cmi broadcast !&6[playerDisplayName] &ejest teraz AFK
+  - cmi broadcast !&6[playerDisplayName] &eis now AFK
   # Defines commands to be performed when player leaves afk mode
   AfkLeaveCmds:
-  - cmi broadcast !&6[playerDisplayName] &ejuż nie jest AFK
+  - cmi broadcast !&6[playerDisplayName] &eis no longer AFK
   # Defines how long to wait after player stops moving to kick player
   # This is additional timer to AutoAfkIn and in case player entered afk mode manually he will get kicked after AutoAfkIn+AutoKickIn seconds
   # This can be used not only to kick but to perform repeating action every x seconds if needed
@@ -636,7 +644,8 @@ Afk:
   - cmi kick [playerName] &eYou have been kicked for idling more than [time]
   # Defines worlds where players will not be placed into afk mode after they idled for defined time
   DisabledWorlds:
-
+  - oneTestWorld
+  - secondTestWorld
   # Disables afk on interaction
   DisableOnInteract: true
   # Prevents player from going bypassing afk mode while continuously holding one button with particular items or on particular blocks
@@ -688,7 +697,7 @@ Holograms:
   Defaults:
     # Default value for hologram view range
     # This defines from how far holograms will appear for the player or when they will disapear
-    viewRange: 32
+    viewRange: 16
     # Defines default update interval
     # Bigger this number is better performance we will have
     updateRange: 8
@@ -797,10 +806,10 @@ GroundClean:
   WhiteList:
     # List of item types not to be removed on ground clean action
     Material:
-
+    - itemType
     # List of item types not to be removed on ground clean action
     EntityType:
-
+    - entityType
 Command:
   CommandFilter:
     Duplicate:
@@ -866,13 +875,17 @@ NickName:
   # cmi.command.nick.bypassblacklist
   # to bypass protection against already in use name/nickname use cmi.command.nick.bypassinuse
   BlackList:
-
+  - admin
+  - administrator
+  - server
+  - staff
+  - staf
   # Min length of nick name, can be bypassed with cmi.command.nick.bypass.length
   MinLength: 4
   # Max length of nick name, can be bypassed with cmi.command.nick.bypass.length
   MaxLength: 16
   # Adds prefix for players nickname to indicate that its not real name. This can be added to display name with {nicknameprefix}
-  Prefix: ''
+  Prefix: '~'
   # When true, will only add nickname prefix when its not same as original name. This can allow colorization or capitalization change without adding prefix
   PrefixWhenDifferent: false
   TabComplete:
